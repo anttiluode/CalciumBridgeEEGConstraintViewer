@@ -26,6 +26,20 @@ The Calcium Bridge: This is the key. The "hunch" or "focus" from one thinking mo
 
 This allows the model to refine its predictions over time, moving from a general gist to a more specific concept, mimicking a plausible cognitive process.
 
+## A Note on Data Filtering to Reduce Bias
+
+A key challenge when decoding brain signals from natural images is that certain concepts are omnipresent. For example, `person` appears in a vast number of images in the COCO dataset.
+
+To prevent the model from simply learning to predict these common categories and to create a more focused decoding task, this project intentionally filters the data:
+
+1.  **Selective Training:** The model is only trained to recognize a specific subset of 26 object categories (defined in the code as `TARGET_CATEGORIES`). Common but potentially confounding categories like `person`, `cell phone`, or `book` were deliberately excluded from this training set.
+
+2.  **Clean Visualization:** The viewer script (`pkas_cal_viewer_gemini2.py`) performs an additional, stricter filtering step. It only selects test images that contain **at least one** of the target objects and **zero** of the excluded objects.
+
+This ensures that when you visualize the model's performance, you are seeing its attempt to decode distinct object concepts, rather than it relying on the statistical likelihood of a person being in the scene.
+
+The thought was that a person computer etc are present in the lab where the alljoined data was recorded and may bias the results. 
+
 # How It Works
 
 Training (pkas_cal_trainer_gemini.py)
