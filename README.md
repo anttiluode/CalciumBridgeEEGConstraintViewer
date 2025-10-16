@@ -72,6 +72,8 @@ COCO Annotations: On the same site, download the "2017 Train/Val annotations". Y
 
 # 2. Training the Model
 
+(There is pre made model at: https://huggingface.co/Aluode/CalciumBridgeEEGConstraintViewer/tree/main)
+
 Run the training script:
 
 python pkas_cal_trainer_gemini.py
